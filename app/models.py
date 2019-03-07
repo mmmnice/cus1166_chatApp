@@ -23,15 +23,15 @@ class subGroup(db.Model):
     __tablename__="subgroup"
     id=db.Column(db.Integer,primary_key=True)
     name=db.Column(db.String,nullable=False)
-    messages=db.relationship("message",backref="subgroup",lazy=True)
+    messages=db.relationship("Message",backref="subgroup",lazy=True)
     workspaceId=db.Column(db.Integer,db.ForeignKey('workspace.id'),nullable=False)
 
     def addMessage(self,message):
-        newMessage=message(message=message,message_id=self.id)
+        newMessage=Message(message=message,subgroup_id=self.id)
         db.session.add(newMessage)
         db.session.commit()
 
-class message(db.Model):
+class Message(db.Model):
     __tablename__="message"
     id=db.Column(db.Integer,primary_key=True)
     message=db.Column(db.String,nullable=False)
