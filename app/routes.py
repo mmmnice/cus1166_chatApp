@@ -1,9 +1,7 @@
-from app.User import bp
-from app.models import *
-from app import db
+from app import app
 from flask import render_template, flash, redirect
 
 
-@bp.route('/')
+@app.route('/')
 def index():
     return render_template('index.html', title='Welcome')
