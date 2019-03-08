@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1> {{workspace.workspaceName}} </h1>
+<ul><div>
+  {% for s in subgroups %}
+    <l> <a href="{{ url_for('subgroup', workspaceId = workspace.id, subgroupId = s.id) }}"> {{s.name}}</a></l><br>
+  {% endfor %}
+</ul></div>
+<h2> Add a Channel </h2>
+  <form action="{{ url_for('workspace', workspaceId = workspace.id) }}" method="post">
+    Channel Name<br>
+    <input type="text" name="subgroupName"><br><br>
+    <input type="submit">
+  </form>
+
+{% endblock %}
