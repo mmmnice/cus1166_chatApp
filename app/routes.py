@@ -9,7 +9,7 @@ from app import app, db
 @app.route('/')
 def index():
     workspaces = Workspace.query.all()
-    return render_template('index.html', title='Welcome',workspaces = workspaces)
+    return render_template('createWorkspace.html',workspaces = workspaces)
 
 #create workspace. form is in index route
 @app.route("/add_workspace/", methods=["POST"])
